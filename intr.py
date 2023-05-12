@@ -6,14 +6,14 @@ def fact(x):
             a*=x
             x-=1
     return a
-print(fact(7))
+#print(fact(7))
 #OR
 def factorial(x):
     if x==1:
         return 1
     else:
         return x*factorial(x-1)
-print(factorial(6))
+# print(factorial(6))
 
 #Quadratic Equations
 def quad(a,b,c):
@@ -25,23 +25,23 @@ def quad(a,b,c):
             print('Real and unequal')
     else:
         print('Imaginary and unequal')
-quad(0,25,0)
+# quad(0,25,0)
 
 #lambdas
-print((lambda x: x**2 + 5*x + 4)(-4))
+# print((lambda x: x**2 + 5*x + 4)(-4))
 
 #map
 nums=[1,2,3,4,5]
 res=list(map(lambda x: x+5,nums))
-print(res)
+# print(res)
 
 #filter
 res2=list(filter(lambda x: x%3==0, nums))
-print(res2)
+# print(res2)
 
 #generators
 def count():
-    i=10
+    i=2
     while i>0:
         yield i
         i-=1
@@ -59,12 +59,12 @@ def hello():
     print('Hello World')
 
 decorated=decor(hello)
-decorated()
+# decorated()
 #OR
 @decor
 def hello():
     print('Hello World')
-hello()
+# hello()
 
 #Recursion
 def is_even(x):
@@ -74,23 +74,23 @@ def is_even(x):
         return is_odd(x-1)
 def is_odd(x):
     return not is_even(x)
-print(is_even(99), is_odd(77))
+# print(is_even(99), is_odd(77))
 
 def fib(x):
     if x==0 or x==1:
         return 1
     else: 
         return fib(x-1) + fib(x-2)
-print(fib(4))
+# print(fib(4))
 
 #args and kwargs
 def func(nargs, *args, **kwargs):
     print(nargs, args, kwargs)
-func(1,2,3,4,5,6, a=7, b=8)
+# func(1,2,3,4,5,6, a=7, b=8)
 
 def func(**kwargs):
     print(kwargs['zero'])
-func(a=0, zero=8)
+# func(a=0, zero=8)
 
 #OOP
 '''
@@ -105,7 +105,27 @@ class Cat:
 felix=Cat('black', 4)
 rover=Cat('white', 3)
 
-print(felix.color)
+# print(felix.color)
+
+#inheritance
+#superclass, subclass inherits from it
+class Animal:
+    def __init__(self, name, color):
+        self.name=name
+        self.color=color
+    def me(self):
+        print("I'm an animal")
+class Cat(Animal):
+    def purr(self):
+        print('Purrr')
+
+class Dog(Animal):
+    def bark(self):
+        print('Woof')
+        super().me()
+fido=Dog('Fido', 'brown')
+# print(fido.color)
+# fido.bark()
 
 
 

@@ -1,0 +1,7 @@
+field = col name
+type = col data type
+key = indexed col
+default = default val of col
+extra = extra info
+col list = data is retrieved
+table name = table from which data is retrieved
