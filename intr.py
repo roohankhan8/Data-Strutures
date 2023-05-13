@@ -193,11 +193,113 @@ class SpecialString1:
             print(result)
         print(self.cont)
         print(other.cont)
+roohan, khan=SpecialString1('Roohan'), SpecialString1('Khan')
+# khan>roohan
 
-roohan=SpecialString1('Roohan')
-khan=SpecialString1('Khan')
-khan>roohan
+'''
+encapsulation = packaging of funcs and vars in object
+Data hiding = implementation details should be hidden
+weakly private methods have one underscores at beg
+strongly private methods have double underscores at beg
+'''
+#weakly
+class Queue:
+    def __init__(self, cont):
+        self._hiddenlist=list(cont)
+    def enqueue(self, value):
+        self._hiddenlist.insert(0,value)
+    def dequeue(self):
+        self._hiddenlist.pop(-1)
+    def __repr__(self):
+        return 'Queue({})'.format(self._hiddenlist)
+q=Queue([1,2,3])
+# print(q)
+# q.enqueue(0)
+# print(q)
+# q.dequeue()
+# print(q)
+# print(q._hiddenlist)
 
+#strongly
+class Spam:
+    __egg=7
+    def print_egg(self):
+        print(self.__egg)
+s=Spam()
+# s.print_egg()
+# print(s._Spam__egg)
+# print(s.__egg)
 
+'''
+class methods are called on class
+static methods
 
+property are used to make attribute read only
+setter getter func
+setter gets prop val
+getter gets val
+'''
+#classmethod
+class Rectangle:
+    def __init__(self, width, height):
+        self.width=width
+        self.height=height
+    def cal_area(self):
+        return self.width*self.height
+    @classmethod
+    def new_square(cls, side_length):
+        return cls(side_length, side_length)
+square=Rectangle.new_square(5)
+print(square.cal_area())
+'''
+new_square is a class method called on class
+'''
+#staticmethod
+# class Pizza:
+#     def __init__(self, toppings):
+#         self.toppings=toppings
+#         self._pine_all=False
+#     @staticmethod
+#     def val_top(topping):
+#         if topping=='pineapple':
+#             raise ValueError('No pineapples')
+#         else:
+#             return True
+#     @property
+#     def pine_all(self):
+#         return self._pine_all
+#     @pine_all.setter
+#     def pine_all(self, val):
+#         if val:
+#             password=input('Enter the password: ')
+#             if password=='roohan':
+#                 self.pine_all=val
+#             else:
+#                 raise ValueError('Alert!')
+# # ingredients=['cheese','onions','spam']
+# pizza=Pizza(['cheese','tomato'])
+# print(pizza.pine_all)
+# pizza.pine_all=True
+# print(pizza.pine_all)
+# # if all(Pizza.val_top(i) for i in ingredients):
+# #     pizza=Pizza(ingredients)
 
+class Pizza:
+    def __init__(self, toppings):
+        self.toppings=toppings
+        self._pine_all=False
+    @property
+    def pine_all(self):
+        return self._pine_all
+    @pine_all.setter
+    def pine_all(self, val):
+        if val:
+            password=input('Enter the password: ')
+            if password=='roohan':
+                self._pine_all=val
+            else:
+                raise ValueError('Alert!')
+pizza=Pizza(['cheese','tomatoes'])
+print(pizza.pine_all)
+pizza.pine_all=True
+print(pizza.pine_all)
