@@ -30,10 +30,12 @@ value_counts()
 groupby()[]
 sum()
 '''
-a=pd.read_csv('the-heart-failure-prediction-pakistan.csv')
+# a=pd.read_csv('the-heart-failure-prediction-pakistan.csv')
+b=pd.read_csv('Sample-Spreadsheet-100-rows.csv')
 #a['month'] = pd.to_datetime(a['Period'], format='mixed').dt.month_name()
 
 #df.drop('state', axis=1, inplace=True)
 
 a.set_index('Age', inplace=True)
 #print(a.head(10))
+print(b.head(10))

@@ -104,7 +104,6 @@ class Cat:
         self.legs=legs
 felix=Cat('black', 4)
 rover=Cat('white', 3)
-
 # print(felix.color)
 
 #inheritance
@@ -126,6 +125,79 @@ class Dog(Animal):
 fido=Dog('Fido', 'brown')
 # print(fido.color)
 # fido.bark()
+
+#magic methods also dunders
+#double underscores at start and end
+#common use = operator overloading
+class Vector2D:
+    def __init__(self, x, y):
+        self.x=x
+        self.y=y
+    def __add__(self, other):
+        return Vector2D(self.x + other.x, self.y + other.y)
+first=Vector2D(5, 7)
+second=Vector2D(3, 9)
+result=first+second
+# print(result.x)
+# print(result.y)
+'''
+__sub__ -
+__mul__ *
+__truediv__ /
+__floordiv__ //
+__mod__ %
+__pow__ **
+__and__ &
+__xor__ ^
+__or__ |
+__lt__ <
+__le__ <=
+__eq__ ==
+__ne__ !=
+__gt__ >
+__ge__ >=
+__len__
+__getitem__
+__setitem__
+__delitem__
+__iter__
+__contains__
+'''
+
+class SpecialString:
+    def __init__(self, cont):
+        self.cont=cont
+    def __truediv__(self, other):
+        line = "="*len(other.cont)
+        return "\n".join([self.cont, line, other.cont])
+spam=SpecialString('spam')
+hello=SpecialString('Hello there')
+bye=SpecialString('Byebye')
+# print(spam/hello)
+# print(hello/bye)
+'''
+first arg become self.cont and second arg becomes other.cont
+here, other = Hello there
+self.cont = spam
+other.cont = Hello there
+truediv func returns each cont with a line break and a line b/w them
+'''
+
+class SpecialString1:
+    def __init__(self, cont):
+        self.cont=cont
+    def __gt__(self, other):
+        for i in range(len(other.cont)+1):
+            result=other.cont[:i]+'>'+self.cont
+            result+='>'+other.cont[i:]
+            print(result)
+        print(self.cont)
+        print(other.cont)
+
+roohan=SpecialString1('Roohan')
+khan=SpecialString1('Khan')
+khan>roohan
+
 
 
 
