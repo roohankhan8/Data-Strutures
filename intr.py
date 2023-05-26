@@ -249,8 +249,8 @@ class Rectangle:
     @classmethod
     def new_square(cls, side_length):
         return cls(side_length, side_length)
-square=Rectangle.new_square(5)
-print(square.cal_area())
+# square=Rectangle.new_square(5)
+# print(square.cal_area())
 '''
 new_square is a class method called on class
 '''
@@ -299,7 +299,19 @@ class Pizza:
                 self._pine_all=val
             else:
                 raise ValueError('Alert!')
-pizza=Pizza(['cheese','tomatoes'])
-print(pizza.pine_all)
-pizza.pine_all=True
-print(pizza.pine_all)
+# pizza=Pizza(['cheese','tomatoes'])
+# print(pizza.pine_all)
+# pizza.pine_all=True
+# print(pizza.pine_all)
+
+try:
+    num1=1
+    num2=0
+    print(num1/num2)
+except:
+    print('Error')
+finally:
+    print('anyway')
+# OR
+# else:
+#     print(4)

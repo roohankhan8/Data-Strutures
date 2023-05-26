@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 # df=pd.Series([1,2,3,4,5,6,7])
-df=pd.read_csv('the-heart-failure-prediction-pakistan.csv')
+df=pd.read_csv('csv/the-heart-failure-prediction-pakistan.csv')
 # df.set_index('Age', inplace=True)
 # df.plot(kind='bar')
 df[df['Age']>50][['Follow.Up', 'Reaction']].plot(kind='bar', stacked=True)
