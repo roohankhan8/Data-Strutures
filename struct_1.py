@@ -141,3 +141,117 @@ G.edge(1, 3)
 G.edge(3, 4)
 G.display()
 print()
+
+class Graph:
+    def __init__(self):
+        self.vertices = set()
+        self.edges = set()
+
+    def add_vertex(self, vertex):
+        self.vertices.add(vertex)
+
+    def add_edge(self, edge):
+        self.edges.add(edge)
+
+    def print_vertices(self):
+        print("Graph Vertices:")
+        for vertex in self.vertices:
+            print(vertex)
+
+    def print_unique_edges(self):
+        print("Unique Graph Edges:")
+        for edge in self.edges:
+            print(edge)
+
+
+# Create an instance of the graph
+graph = Graph()
+
+# Add vertices to the graph
+graph.add_vertex("A")
+graph.add_vertex("B")
+graph.add_vertex("C")
+graph.add_vertex("D")
+
+# Print the vertices
+graph.print_vertices()
+
+# Add an edge to the graph
+graph.add_edge(("A", "B"))
+graph.add_edge(("B", "C"))
+graph.add_edge(("C", "D"))
+graph.add_edge(("D", "A"))
+graph.add_edge(("A", "C"))
+
+# Print the unique edges
+graph.print_unique_edges()
+
+
+
+class Graph:
+    def __init__(self, vertices):
+        self.vertices = vertices
+        self.adj_matrix = [[0] * len(vertices) for _ in range(len(vertices))]
+
+    def add_edge(self, src, dest):
+        src_index = self.vertices.index(src)
+        dest_index = self.vertices.index(dest)
+        self.adj_matrix[src_index][dest_index] = 1
+        self.adj_matrix[dest_index][src_index] = 1
+
+    def print_adjacency_matrix(self):
+        print("Adjacency Matrix:")
+        for row in self.adj_matrix:
+            print(row)
+            
+# Create an instance of the graph
+graph = Graph(["A", "B", "C", "D"])
+
+# Add edges to the graph
+graph.add_edge("A", "B")
+graph.add_edge("B", "C")
+graph.add_edge("C", "D")
+graph.add_edge("D", "A")
+graph.add_edge("A", "C")
+
+# Print the adjacency matrix
+graph.print_adjacency_matrix()
+
+
+class CircularQueue:
+    def __init__(self, size):
+        self.size = size
+        self.queue = [None] * size
+        self.front = -1
+        self.rear = -1
+
+    def is_empty(self):
+        return self.front == -1
+
+    def is_full(self):
+        return (self.rear + 1) % self.size == self.front
+
+    def enqueue(self, item):
+        if self.is_full():
+            print("Queue is full. Cannot enqueue item.")
+        else:
+            if self.is_empty():
+                self.front = 0
+            self.rear = (self.rear + 1) % self.size
+            self.queue[self.rear] = item
+            print(f"Enqueued item: {item}")
+
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty. Cannot dequeue item.")
+            return None
+        else:
+            item = self.queue[self.front]
+            if self.front == self.rear:
+                self.front = -1
+                self.rear = -1
+            else:
+                self.front = (self.front + 1) % self.size
+            print(f"Dequeued item: {item}")
+            return item
+
